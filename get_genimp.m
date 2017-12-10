@@ -54,14 +54,20 @@ maxval=max(max(gen),max(imp));
 
 xbins=[-1700 -1500 -500 -10 0 20 50 100 350 450];
 
-% figure(3);
+figure(3);
 % h=histogram(imp, 'facecolor', 'b');
 % nbins=h.NumBins;
 % hold on;
 % histogram(gen, nbins, 'facecolor', 'r');
-% legend('impostor','genuine');
+figure(3);
+hist(imp);
+h = findobj(gca,'Type','patch');
+set(h,'FaceColor','r')
 
-%hist(imp, xbins);
+hold on;
+hist(gen);
+legend('impostor','genuine');
+
 
 
 

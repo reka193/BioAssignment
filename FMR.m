@@ -1,4 +1,4 @@
-function no_FMR = FMR(t, imp)
+function FMR = FMR(t, imp)
 
 %Counting the scores that are above of the certain threshold 't'
 
@@ -12,5 +12,5 @@ end
 
 %Calculation of the FMR.
 
-no_FMR=count/length(imp);
+FMR=count/length(imp);
 
