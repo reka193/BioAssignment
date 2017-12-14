@@ -56,20 +56,21 @@ maximp = max(imp)
 minval=min(mingen,minimp)
 maxval=max(maxgen,maximp)
 range = maxval - minval
-%range is 2001 -> 2001/87=23 23 is the boundaries 87binssize
+%range is 2001 -> 2001/23=87 87 is the boundaries
 xbins = [];
 
 q = minval;
 m=1;
 while 1
-    if q>maxval;
+    if q>maxval
         xbins(m)= q;
         break;
     end
-    xbins(m)= q;
-    q = q+29;
+    xbins(m)= q
+    q = q+87;
     m=m+1;
 end
+   xbins
     
 %minval=min(min(gen),min(imp));
 %maxval=max(max(gen),max(imp));
