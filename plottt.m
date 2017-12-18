@@ -7,7 +7,7 @@
 %The vector 'y' contains the corresponding FMR values
 %The vector 'z' contains the corresponding FNMR values
 
-x=-300:0;
+x=-300:50;
 y=zeros(1,length(x));
 z=zeros(1,length(x));
 
@@ -20,7 +20,6 @@ for i=1:length(x)
 end
 
 %Plotting FMR and FNMR
-
 
 figure(4); plot(x,y);
 title('False match rate and False non match rate')
@@ -37,6 +36,23 @@ title('Decision Error Trade-Off');
 xlabel('FMR(t)')
 ylabel('FNMR(t)')
 axis([0 1 0 1])
+hold on
+
+%Calculating and plotting EER
+
+% p=[0 1];
+% b_line=polyfit(p,p,1);
+% y_line2=polyval(b_line,y);
+
+p=[1 0];
+y_line2=polyval(p,y);
+
+x_int=interp1((y_line2-z), y, 0);
+y_int=polyval(p,x_int);
+plot(p,p)
+hold on
+plot(x_int, y_int, '+r')
+
 
 
 %Plotting ROC

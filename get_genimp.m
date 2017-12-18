@@ -28,7 +28,7 @@ for i = 1:np
     end
 end
 
-%Initialization of the vector containing the impostor scores
+%Initialization of the vector containing the imposter scores
 
 imp=[];
 
@@ -49,47 +49,25 @@ for i = 1:np
     end
 end
 
-mingen = min(gen)
-maxgen = max(gen)
-minimp = min(imp)
-maximp = max(imp)
-minval=min(mingen,minimp)
-maxval=max(maxgen,maximp)
-range = maxval - minval
-%range is 2001 -> 2001/87=23 23 is the boundaries 87binssize
-xbins = [];
+%The minimum and maximum value of gen and imp
 
-q = minval;
-m=1;
-while 1
-    if q>maxval;
-        xbins(m)= q;
-        break;
-    end
-    xbins(m)= q;
-    q = q+29;
-    m=m+1;
-end
-    
-%minval=min(min(gen),min(imp));
-%maxval=max(max(gen),max(imp));
-%xbins=[-1700 -1500 -500 -10 0 20 50 100 350 450];
-%figure(3);
-%hist(imp, 100);
-%h = findobj(gca,'Type','patch');
-%set(h,'FaceColor','r')
-%hold on;
-%hist(gen, 100);
-%legend('impostor','genuine');
+minval=min(min(gen),min(imp));
+maxval=max(max(gen),max(imp));
 
+%Defining the bins, third parameter: the number of bins
+
+xbins=linspace(minval-1,maxval+1,100);
 
 figure(3);
 hist(imp, xbins);
 h = findobj(gca,'Type','patch');
 set(h,'FaceColor','r')
+
 hold on;
 hist(gen, xbins);
-legend('impostor','genuine');
+legend('imposter','genuine');
+
+
 
 
 
